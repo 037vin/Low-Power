@@ -223,6 +223,45 @@ void	LowPowerClass::idle(period_t period, adc_t adc, timer2_t timer2,
 	if (twi == TWI_OFF)			power_twi_enable();
 }
 #endif
+//Include ATtiny84
+//Added from
+//https://github.com/ortegafernando/Low-Power/blob/master/LowPower.cpp
+#if defined (__AVR_ATtiny84__)
+void	LowPowerClass::idle(period_t period, adc_t adc, timer1_t timer1, timer0_t timer0, usi_t usi)
+{
+	// Temporary clock source variable 
+	unsigned char clockSource = 0;
+	
+	if (adc == ADC_OFF)	
+	{
+		ADCSRA &= ~(1 << ADEN);
+		power_adc_disable();
+	}
+	
+	if (timer1 == TIMER1_OFF)	power_timer1_disable();	
+	if (timer0 == TIMER0_OFF)	power_timer0_disable();	
+	if (usi == USI_OFF)			power_usi_disable();
+	
+	if (period != SLEEP_FOREVER)
+	{
+		wdt_enable(period);
+		WDTCSR |= (1 << WDIE);	
+	}
+	
+	lowPowerBodOn(SLEEP_MODE_IDLE);
+	
+	if (adc == ADC_OFF)
+	{
+		power_adc_enable();
+		ADCSRA |= (1 << ADEN);
+	}
+	
+	if (timer1 == TIMER1_OFF)	power_timer1_enable();	
+	if (timer0 == TIMER0_OFF)	power_timer0_enable();	
+	if (usi == USI_OFF)			power_usi_enable();
+}
+
+#endif
 
 /*******************************************************************************
 * Name: idle

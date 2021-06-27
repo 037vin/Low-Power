@@ -115,6 +115,12 @@ enum idle_t
 	IDLE_2
 };
 
+enum usi_t
+{
+	USI_OFF,
+	USI_ON
+};
+
 class LowPowerClass
 {
 	public:
@@ -158,12 +164,12 @@ class LowPowerClass
 			//void	powerStandby(period_t period, adc_t adc, bod_t bod) __attribute__((optimize("-O1")));
 			//void	powerExtStandby(period_t period, adc_t adc, bod_t bod, timer2_t timer2) __attribute__((optimize("-O1")));
 
-			#if !((defined __AVR_ATtiny84__))	
+			/* #if !((defined __AVR_ATtiny84__))	
 			void	adcNoiseReduction(period_t period, adc_t adc, timer2_t timer2) __attribute__((optimize("-O1")));
 			void	powerSave(period_t period, adc_t adc, bod_t bod, timer2_t timer2) __attribute__((optimize("-O1")));
 			void	powerStandby(period_t period, adc_t adc, bod_t bod) __attribute__((optimize("-O1")));
 			void	powerExtStandby(period_t period, adc_t adc, bod_t bod, timer2_t timer2) __attribute__((optimize("-O1")));
-			#endif
+			#endif */
 
 			void	powerDown(period_t period, adc_t adc, bod_t bod) __attribute__((optimize("-O1")));
 

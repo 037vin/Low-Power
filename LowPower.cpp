@@ -817,7 +817,7 @@ void	LowPowerClass::idle(period_t period, adc_t adc, timer5_t timer5,
 *				(b) TIMER2_ON - Leave Timer 2 module in its default state
 *
 *******************************************************************************/
-void	LowPowerClass::adcNoiseReduction(period_t period, adc_t adc,
+/* void	LowPowerClass::adcNoiseReduction(period_t period, adc_t adc,
 										 timer2_t timer2)
 {
 	// Temporary clock source variable
@@ -855,7 +855,7 @@ void	LowPowerClass::adcNoiseReduction(period_t period, adc_t adc,
         TCCR2B = clockSource;
 	}
 	#endif
-}
+} */
 
 /*******************************************************************************
 * Name: powerDown
@@ -958,7 +958,7 @@ void	LowPowerClass::powerDown(period_t period, adc_t adc, bod_t bod)
 *				(b) TIMER2_ON - Leave Timer 2 module in its default state
 *
 *******************************************************************************/
-void	LowPowerClass::powerSave(period_t period, adc_t adc, bod_t bod,
+/* void	LowPowerClass::powerSave(period_t period, adc_t adc, bod_t bod,
 							     timer2_t timer2)
 {
 	// Temporary clock source variable
@@ -1007,7 +1007,7 @@ void	LowPowerClass::powerSave(period_t period, adc_t adc, bod_t bod,
         TCCR2B = clockSource;
 	}
 	#endif
-}
+} */
 
 /*******************************************************************************
 * Name: powerStandby
@@ -1039,7 +1039,7 @@ void	LowPowerClass::powerSave(period_t period, adc_t adc, bod_t bod,
 *				(b) BOD_ON - Leave BOD module in its default state
 *
 *******************************************************************************/
-void	LowPowerClass::powerStandby(period_t period, adc_t adc, bod_t bod)
+/* void	LowPowerClass::powerStandby(period_t period, adc_t adc, bod_t bod)
 {
 	if (adc == ADC_OFF)	ADCSRA &= ~(1 << ADEN);
 
@@ -1064,7 +1064,7 @@ void	LowPowerClass::powerStandby(period_t period, adc_t adc, bod_t bod)
 
 	if (adc == ADC_OFF) ADCSRA |= (1 << ADEN);
 }
-
+ */
 /*******************************************************************************
 * Name: powerExtStandby
 * Description: Putting microcontroller into power extended standby state. This
@@ -1101,7 +1101,7 @@ void	LowPowerClass::powerStandby(period_t period, adc_t adc, bod_t bod)
 *				(b) TIMER2_ON - Leave Timer 2 module in its default state
 *
 *******************************************************************************/
-void	LowPowerClass::powerExtStandby(period_t period, adc_t adc, bod_t bod,
+/* void	LowPowerClass::powerExtStandby(period_t period, adc_t adc, bod_t bod,
 									   timer2_t timer2)
 {
 	// Temporary clock source variable
@@ -1155,7 +1155,7 @@ void	LowPowerClass::powerExtStandby(period_t period, adc_t adc, bod_t bod,
 	}
 	#endif
 }
-
+ */
 /*******************************************************************************
 * Name: ISR (WDT_vect)
 * Description: Watchdog Timer interrupt service routine. This routine is
